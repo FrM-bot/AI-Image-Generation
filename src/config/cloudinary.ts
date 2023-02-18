@@ -14,21 +14,3 @@ export const uploadImgToCloudinary = async (filePath: string, options?: UploadAp
     return { error: error.message }
   }
 }
-
-export async function upluadFilesToCloudinary (filesPath: string[]) {
-  try {
-    const images: string[] = []
-
-    for (const filePath of filesPath) {
-      const imageUploaded = await uploadImgToCloudinary(filePath)
-      if (imageUploaded?.error) {
-        return { error: imageUploaded?.error, status: 406 }
-      }
-      imageUploaded?.img?.secure_url &&
-        images.push(imageUploaded?.img?.secure_url)
-    }
-    return { images }
-  } catch (error: any) {
-    return { error: error?.message, status: 500 }
-  }
-}

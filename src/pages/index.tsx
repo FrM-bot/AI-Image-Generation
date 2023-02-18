@@ -1,5 +1,5 @@
-import { Inter } from '@next/font/google'
-const inter = Inter({ subsets: ['latin'] })
+import { Roboto_Mono } from '@next/font/google'
+const robotoMono = Roboto_Mono({ subsets: ['latin'] })
 import FormPrompt from '@/components/FormPrompt'
 import Layout from '@/layouts/Layout'
 

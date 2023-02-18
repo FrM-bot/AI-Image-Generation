@@ -1,0 +1,11 @@
+export const enum TYPE_DISPATCH_GRAYSACLE  {
+    ACTIVE_GRAYSCALE = 'ACTIVE_GRAYSCALE',
+    DESACTIVE_GRAYSCALE = 'DESACTIVE_GRAYSCALE',
+    SET_VALUE_GRAYSCALE = 'SET_VALUE_GRAYSCALE'
+}
+
+export type DispatchGrayScale = 'ACTIVE_GRAYSCALE' | 'DESACTIVE_GRAYSCALE' | 'SET_VALUE_GRAYSCALE'
+
+export type ReducerStateGrayScaleConfig = {
+    grayscale: boolean
+}

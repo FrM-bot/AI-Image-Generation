@@ -22,8 +22,6 @@ export default async function handler(
     res.send({ error: "Not prompt provider" })
   }
   const response = await openai.createImage({
-    // prompt:
-    //   "A dream of a distant galaxy, by Caspar David Friedrich, trending on artstation HQ",
     prompt,
     n: 1,
     size: "1024x1024",

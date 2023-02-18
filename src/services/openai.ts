@@ -9,9 +9,7 @@ export const GenerateImage = async ({
   prompt,
 }: {
   prompt: string
-}): Promise<
-  ImageGenerated[]
-> => {
+}): Promise<ImageGenerated[]> => {
   try {
     const { data }: Data = await fetch("/api/openai", {
       headers: {
@@ -22,7 +20,6 @@ export const GenerateImage = async ({
         prompt,
       }),
     }).then((response) => response.json())
-    console.log(data)
     return data
   } catch (error) {
     console.error(error)

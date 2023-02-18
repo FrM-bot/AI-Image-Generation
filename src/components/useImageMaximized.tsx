@@ -1,5 +1,4 @@
-import { ImageGenerated } from '@/interface/Image'
-import { useEffect, useState, MouseEvent } from 'react'
+import { useState } from 'react'
 import { useModal } from './Modal'
 
 interface Props {

@@ -1,5 +1,6 @@
 import { ConfigContext } from '@/context/ConfigProvider'
-import React, { useState, useCallback, useContext, useEffect } from 'react'
+import { TYPE_DISPATCH_GRAYSACLE } from '@/interface/Grayscale'
+import { useState, useCallback, useContext, useEffect } from 'react'
 import Button from './Button'
 
 const Config = () => {
@@ -11,9 +12,9 @@ const Config = () => {
     
     const handlerActiveGraySacele = useCallback(() => {
         if (grayscale) {
-            dispatchGrayScale({ type: 'DESACTIVE_GRAYSCALE', payload: { grayscale: false } })
+            dispatchGrayScale({ type: TYPE_DISPATCH_GRAYSACLE.DESACTIVE_GRAYSCALE, payload: { grayscale: false } })
         } else {
-            dispatchGrayScale({ type: 'ACTIVE_GRAYSCALE', payload: { grayscale: true } })
+            dispatchGrayScale({ type: TYPE_DISPATCH_GRAYSACLE.ACTIVE_GRAYSCALE, payload: { grayscale: true } })
 
         }
     }, [dispatchGrayScale, grayscale])

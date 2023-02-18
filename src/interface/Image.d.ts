@@ -1,8 +1,6 @@
-export interface Image {
+export interface Image extends ImageGenerated {
   id: string
-  url: string
   name: string
-  prompt: string
 }
 export interface ImageGenerated {
   url: string
