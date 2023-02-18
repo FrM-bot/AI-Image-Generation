@@ -12,7 +12,7 @@ function LocalImages() {
     const { Message: MessageWarning } = useMessage({ type: 'warning', initialMessage: 'The images are remove after 5 minutes if you don\'t share.' })
     useEffect(() => {
         setAllImages(initialState)
-    }, [initialState])
+    }, [])
 
     return (
         <section>
