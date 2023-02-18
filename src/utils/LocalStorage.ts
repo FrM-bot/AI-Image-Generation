@@ -3,7 +3,7 @@ import { KeysLovalValue } from "@/interface/LocalStarage"
 
 export const getLocalValue = (key: KeysLovalValue) => {
     try {
-        const stringifyLocalValue = globalThis?.window?.localStorage?.getItem(key) || ''
+        const stringifyLocalValue = globalThis?.window?.localStorage?.getItem(key) || 'null'
         const value = globalThis?.window?.JSON?.parse(stringifyLocalValue)
         return value
     } catch (error) {
