@@ -25,7 +25,7 @@ export default function Showcase() {
                     <Columns>
                         <>
                             {
-                                !isLoading || Images.length > 0 ? Images.map(image => (
+                                !isLoading || Images?.length > 0 ? Images?.map(image => (
                                     <Suspense key={image.id}>
                                         <Picture alt={image.prompt} src={image.url} />
                                     </Suspense>

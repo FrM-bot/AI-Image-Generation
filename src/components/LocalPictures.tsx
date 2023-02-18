@@ -37,7 +37,7 @@ function LocalImages() {
                 </>
             </Columns>
             {
-                allImages.length === 0 &&
+                allImages?.length === 0 &&
                 <div className="grid place-content-center w-full my-4">
                     <span>Not images generated</span>
                 </div>

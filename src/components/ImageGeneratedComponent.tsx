@@ -15,7 +15,7 @@ function ImageGeneratedComponent({ images }: Props) {
             </Card>
             <div className='flex justify-center items-start gap-4'>
                 {
-                    images.length > 0 ?
+                    images?.length > 0 ?
                     images.map(image => (
                             <LocalPicture key={image.url} url={image.url} prompt={image.prompt} keyLocal='lastImagesGenerated' />
                         ))
