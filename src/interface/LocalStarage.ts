@@ -1,4 +1,5 @@
-export type KeysLovalValue = 'lastImagesGenerated' | 'darkmode' | 'grayscale' | 'images'
+export type KeyLocalImages = 'images' | 'lastImagesGenerated'
+export type KeysLovalValue =  | 'darkmode' | 'grayscale' | KeyLocalImages
 
 export const enum LOCAL_STORAGE_KEYS {
     LAST_IMAGES_GENERATED = 'lastImagesGenerated',

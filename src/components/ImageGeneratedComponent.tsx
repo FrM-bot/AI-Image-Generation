@@ -1,19 +1,27 @@
 import { ImageGenerated } from '@/interface/Image'
 import Card from './Card'
-import ImagesToShare from './ImagesToShare'
+import LocalPicture from './LocalPicture'
+import SkeletonCards from './SkeletonCards'
 interface Props {
-    imagesGenerated: ImageGenerated[]
+    images: ImageGenerated[]
 }
 
-function ImageGeneratedComponent({ imagesGenerated }: Props) {
-
+function ImageGeneratedComponent({ images }: Props) {
+    
     return (
         <>
             <Card>
-                <h2>Images generated</h2>
+                <h1>Images generated</h1>
             </Card>
             <div className='flex justify-center items-start gap-4'>
-                <ImagesToShare numberOfCards={1} imagesGenerated={imagesGenerated} isLastGenerated={true} />
+                {
+                    images.length > 0 ?
+                    images.map(image => (
+                            <LocalPicture key={image.url} url={image.url} prompt={image.prompt} keyLocal='lastImagesGenerated' />
+                        ))
+                        :
+                        <SkeletonCards numberOfCards={1} />
+                }
             </div>
         </>
     )

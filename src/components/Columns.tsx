@@ -3,7 +3,7 @@ interface Props {
 }
 function Columns({ children }: Props) {
     return (
-        <div className="w-full my-2 sm:columns-3 columns-2">
+        <div className="w-full gap-2 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] my-4">
             {children}
         </div>
     )

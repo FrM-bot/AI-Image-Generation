@@ -4,12 +4,13 @@ import { GenerateImage } from "../services/openai"
 import Button from "./Button"
 import Form from "./Form"
 import Input from "./Input"
-import LocalImages from "./LocalImages"
+import LocalImages from "./LocalPictures"
 import ImagesGeneratedComponent from './ImageGeneratedComponent'
 import { getLocalValue, setLocalValue } from "@/utils/LocalStorage"
 import { LOCAL_STORAGE_KEYS } from '@/interface/LocalStarage'
+import Text from "./Text"
 
-function FormPrompt() {
+function ImageGenerated() {
   const [imagesGenerated, setImagesGenerated] = useState<ImageGenerated[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -33,20 +34,17 @@ function FormPrompt() {
     }
   }
 
-
-
   return (
     <section className="mt-4">
       <Form onSubmit={onSubmit}>
         <div className="flex rounded gap-2 mb-4">
-          <Input props={{ name: 'prompt', type: 'text', placeholder: 'Beautiful fantasy landscape, trending on artstation' }} />
-          <Button isLoading={isLoading}><span>Generate</span></Button>
+          <Input props={{ name: 'prompt', type: 'text', placeholder: 'Beautiful fantasy landscape, artstation HQ' }} />
+          <Button isLoading={isLoading}><Text variant="Gradient">Generate</Text></Button>
         </div>
       </Form>
-      <ImagesGeneratedComponent imagesGenerated={imagesGenerated} />
-      <LocalImages />
+      <ImagesGeneratedComponent images={imagesGenerated} />
     </section>
   )
 }
 
-export default FormPrompt
+export default ImageGenerated
