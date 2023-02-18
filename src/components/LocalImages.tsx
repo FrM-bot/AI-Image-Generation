@@ -1,4 +1,5 @@
 import { ImageGenerated } from "@/interface/Image"
+import { LOCAL_STORAGE_KEYS } from "@/interface/LocalStarage"
 import { getLocalValue } from "@/utils/LocalStorage"
 import { useEffect, useState } from "react"
 import Card from "./Card"
@@ -6,12 +7,12 @@ import ImagesToShare from "./ImagesToShare"
 import useMessage from "./useMessage"
 
 function LocalImages() {
-    const initialState = getLocalValue('images')
+    const initialState = getLocalValue(LOCAL_STORAGE_KEYS.IMAGES)
     const [allImages, setAllImages] = useState<ImageGenerated[]>([])
     const { Message: MessageWarning } = useMessage({ type: 'warning', initialMessage: 'The images are remove after 5 minutes if you don\'t share.' })
     useEffect(() => {
         setAllImages(initialState)
-    }, [])
+    }, [initialState])
 
     return (
         <section>
