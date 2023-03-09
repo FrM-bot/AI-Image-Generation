@@ -17,7 +17,7 @@ function ImageGeneratedComponent({ images }: Props) {
                 {
                     images?.length > 0 ?
                     images?.map(image => (
-                            <LocalPicture key={image.url} url={image.url} prompt={image.prompt} keyLocal='lastImagesGenerated' />
+                            <LocalPicture key={image?.url} url={image?.url} prompt={image?.prompt} keyLocal='lastImagesGenerated' />
                         ))
                         :
                         <SkeletonCards numberOfCards={1} />

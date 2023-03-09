@@ -41,7 +41,7 @@ function ImageGenerated() {
         if (error) return alert(error)
 
         if (data) {
-          const dataInLocalStorage = getLocalStorageValue(LOCAL_STORAGE_KEYS.IMAGES)
+          const dataInLocalStorage = getLocalStorageValue(LOCAL_STORAGE_KEYS.IMAGES) ?? []
           const dataLocalStorage = [...dataInLocalStorage, ...data]
           setLocalStorageValue(LOCAL_STORAGE_KEYS.IMAGES, dataLocalStorage)
           setLocalStorageValue(LOCAL_STORAGE_KEYS.LAST_IMAGES_GENERATED, data)
@@ -54,6 +54,8 @@ function ImageGenerated() {
         .finally(() => setIsLoading(false))
     }
   }
+
+  console.log(imagesGenerated)
 
   return (
     <section className="mt-4">

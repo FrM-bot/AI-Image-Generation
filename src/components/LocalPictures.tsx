@@ -29,14 +29,13 @@ function LocalImages() {
 
             <Columns>
                 <>
-                {allImages}
-                    {/* {
+                    {
                         allImages?.map(image => (
                             <Suspense key={image.url}>
                                 <LocalPicture url={image.url} prompt={image.prompt} keyLocal='images' />
                             </Suspense>
                         ))
-                    } */}
+                    }
                 </>
             </Columns>
             {

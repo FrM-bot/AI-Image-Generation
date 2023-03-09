@@ -52,7 +52,7 @@ function LocalPicture({ prompt, url, keyLocal }: ImageGenerated & Props) {
   return (
     <>
       <picture key={url} className="overflow-hidden inline-block cursor-pointer rounded-md h-fit shadow-lg shadow-black/20 hover:shadow duration-300 my-3 border-[4px] dark:border-zinc-800 dark:hover:border-white">
-        <img onError={() => errorLoadImage(url)} onClick={() => showModalPreviewImage({ prompt, url })} loading="lazy" className={classNamesJoin('hover:scale-110 max-h-[60vh] w-full duration-300 rounded', grayscale ? 'grayscale hover:grayscale-0' : '')} src={url} alt={prompt} />
+        <img onError={() => errorLoadImage(url)} onClick={() => showModalPreviewImage({ prompt, url })} loading="lazy" className={classNamesJoin('hover:scale-110 max-h-[80vh] w-full duration-300 rounded', grayscale ? 'grayscale hover:grayscale-0' : '')} src={url} alt={prompt} />
       </picture>
       <Modal>
         <>
