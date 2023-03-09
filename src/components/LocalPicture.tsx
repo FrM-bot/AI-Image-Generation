@@ -3,7 +3,7 @@ import { ImageGenerated } from "@/interface/Image"
 import { KeyLocalImages, LOCAL_STORAGE_KEYS } from "@/interface/LocalStarage"
 import { SaveImage } from "@/services/images"
 import { classNamesJoin } from "@/utils/className"
-import { getLocalValue, setLocalValue } from "@/utils/LocalStorage"
+import { getLocalStorageValue, setLocalStorageValue } from "@/utils/LocalStorage"
 import { useContext, useState } from "react"
 import Button from "./Button"
 import useImageMaximized from "./useImageMaximized"
@@ -28,10 +28,10 @@ function LocalPicture({ prompt, url, keyLocal }: ImageGenerated & Props) {
     handlerSetImageToMaximize({ alt: prompt, src: url })
   }
   const errorLoadImage = (urlError: string) => {
-    const localImages: ImageGenerated[] | null = getLocalValue(keyLocal)
+    const localImages: ImageGenerated[] | null = getLocalStorageValue(keyLocal)
     if (localImages && localImages?.length > 0) {
       const newImages = localImages.filter(({ url }) => urlError !== url)
-      setLocalValue(keyLocal, JSON.stringify(newImages))
+      setLocalStorageValue(keyLocal, JSON.stringify(newImages))
     }
   }
   const handlerShare = ({ url, prompt }: ImageGenerated) => {
