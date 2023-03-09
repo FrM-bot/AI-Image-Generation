@@ -4,7 +4,6 @@ import { getLocalStorageValue } from "@/utils/LocalStorage"
 import { useEffect, useState, lazy, Suspense } from "react"
 import Card from "./Card"
 import Columns from "./Columns"
-// import ImagesToShare from "./ImagesToShare"
 import useMessage from "./useMessage"
 
 const LocalPicture = lazy(() => import("./LocalPicture"))
@@ -15,7 +14,6 @@ function LocalImages() {
     useEffect(() => {
         const initialState: ImageGenerated[] = getLocalStorageValue(LOCAL_STORAGE_KEYS.IMAGES) ?? []
         setAllImages(initialState)
-        // console.log(allImages, Array.isArray(allImages) , typeof initialState)
     }, [])
 
 

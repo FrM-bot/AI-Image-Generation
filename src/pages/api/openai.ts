@@ -16,7 +16,6 @@ export default async function handler(
   if (req.method === "POST") {
     try {
       const { prompt, apiKey } = req.body as DataToGenerate
-      console.log(apiKey)
       const configuration = new Configuration({
         apiKey: apiKey ?? process.env.OPEN_AI_API_KEY,
       })
@@ -30,7 +29,6 @@ export default async function handler(
         size: "1024x1024",
         response_format: "url",
       })
-      console.log({ prompt }, "data", response.data)
       const data: { url: string; prompt: string }[] = response.data.data.map(
         ({ url }) => ({
           url: url ?? "",

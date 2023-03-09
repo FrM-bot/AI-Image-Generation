@@ -28,10 +28,10 @@ function LocalPicture({ prompt, url, keyLocal }: ImageGenerated & Props) {
     handlerSetImageToMaximize({ alt: prompt, src: url })
   }
   const errorLoadImage = (urlError: string) => {
-    const localImages: ImageGenerated[] | null = getLocalStorageValue(keyLocal)
+    const localImages: ImageGenerated[] | null = getLocalStorageValue(keyLocal) ?? []
     if (localImages && localImages?.length > 0) {
-      const newImages = localImages.filter(({ url }) => urlError !== url)
-      setLocalStorageValue(keyLocal, JSON.stringify(newImages))
+      const newImages = localImages?.filter(({ url }) => urlError !== url)
+      setLocalStorageValue(keyLocal, newImages)
     }
   }
   const handlerShare = ({ url, prompt }: ImageGenerated) => {

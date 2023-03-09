@@ -7,7 +7,6 @@ interface Props {
 }
 
 function ImageGeneratedComponent({ images }: Props) {
-    
     return (
         <>
             <Card>

@@ -1,5 +1,5 @@
 import { ImageGenerated } from "@/interface/Image"
-import { useEffect, useState } from "react"
+import { ChangeEvent, useEffect, useState } from "react"
 import { DataToGenerate, GenerateImage } from "../services/openai"
 import Button from "./Button"
 import Form from "./Form"
@@ -27,14 +27,13 @@ function ImageGenerated() {
   const [isLoading, setIsLoading] = useState(false)
   const [isShowPassword, setIsShowPassword] = useState(false)
 
-
   useEffect(() => {
-    const initialState = getLocalStorageValue(LOCAL_STORAGE_KEYS.LAST_IMAGES_GENERATED)
+    const initialState = getLocalStorageValue(LOCAL_STORAGE_KEYS.LAST_IMAGES_GENERATED) ?? []
     setImagesGenerated(initialState)
   }, [])
 
-
   const onSubmit = ({ prompt, apiKey }: DataToGenerate) => {
+
     if (prompt.length > 0) {
       setIsLoading(true)
       GenerateImage({ prompt, apiKey }).then(({ data, error }) => {
@@ -48,14 +47,11 @@ function ImageGenerated() {
           setImagesGenerated(data)
         }
       }).catch(error => {
-        console.error(error)
         alert(error.message)
       })
         .finally(() => setIsLoading(false))
     }
   }
-
-  console.log(imagesGenerated)
 
   return (
     <section className="mt-4">
@@ -63,7 +59,7 @@ function ImageGenerated() {
         <div className="flex flex-col gap-2">
           <div className="flex rounded gap-2 mb-4">
 
-            <Input props={{ name: 'apiKey', type: isShowPassword ? 'text' : 'password', placeholder: 'Or try with your api key.' }} />
+            <Input props={{ name: 'apiKey', type: isShowPassword ? 'text' : 'password', placeholder: 'Try with your api key.', autoComplete: 'cc-name' }} />
             <Button props={{ type: 'button', onClick: () => setIsShowPassword(prevValue => !prevValue) }}>
               {
                 isShowPassword ?
@@ -71,7 +67,6 @@ function ImageGenerated() {
                   <OpenEye />
               }
             </Button>
-
           </div>
           <div className="flex rounded gap-2 mb-4">
             <Input props={{ name: 'prompt', type: 'text', placeholder: 'Beautiful fantasy landscape, artstation HQ' }} />
