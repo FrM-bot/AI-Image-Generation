@@ -17,7 +17,7 @@ export default async function handler(
     try {
       const { prompt, apiKey } = req.body as DataToGenerate
       const configuration = new Configuration({
-        apiKey: apiKey ?? process.env.OPEN_AI_API_KEY,
+        apiKey: apiKey || process.env.OPEN_AI_API_KEY,
       })
       const openai = new OpenAIApi(configuration)
       if (!prompt) {

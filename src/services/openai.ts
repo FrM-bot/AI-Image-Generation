@@ -14,6 +14,11 @@ export const GenerateImage = async ({
   prompt,
   apiKey,
 }: DataToGenerate): Promise<{ data?: ImageGenerated[]; error?: string }> => {
+  const body = new FormData()
+  apiKey && body.append('apiKey', apiKey)
+  body.append('prompt', prompt)
+  body.append('n', String(1))
+  body.append('size', "1024x1024")
   try {
     const response = await fetch("/api/openai", {
       headers: {
