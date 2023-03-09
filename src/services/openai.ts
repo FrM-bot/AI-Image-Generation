@@ -5,24 +5,31 @@ interface Data {
   created: number
 }
 
+export interface DataToGenerate {
+  prompt: string
+  apiKey?: string
+}
+
 export const GenerateImage = async ({
   prompt,
-}: {
-  prompt: string
-}): Promise<ImageGenerated[]> => {
+  apiKey,
+}: DataToGenerate): Promise<{ data?: ImageGenerated[]; error?: string }> => {
   try {
-    const { data }: Data = await fetch("/api/openai", {
+    const response = await fetch("/api/openai", {
       headers: {
         "Content-Type": "application/json",
       },
       method: "POST",
       body: JSON.stringify({
+        apiKey,
         prompt,
+        n: 1,
+        size: "1024x1024",
       }),
-    }).then((response) => response.json())
+    })
+    const data = await response.json()
     return data
-  } catch (error) {
-    console.error(error)
-    throw new Error("ERROR_GENERATE_IMAGE", { cause: "FETCH" })
+  } catch (error: any) {
+    throw new Error("FETCH_ERROR")
   }
 }

@@ -23,7 +23,7 @@ export const SaveImage = async ({ url, prompt }: {
 
 export const GetImages = async (): Promise<Image[]> => {
   try {
-    const images = await fetch("/api/images", { cache: 'default' }).then(response => response.json())
+    const images = await fetch("/api/images").then(response => response.json())
     return images 
   } catch (error) {
     throw new Error("ERROR_GET_IMAGES")

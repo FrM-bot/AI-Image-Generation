@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer } from "react"
-import { getLocalValue } from "@/utils/LocalStorage"
+import { getLocalStorageValue } from "@/utils/LocalStorage"
 import { DispatchGrayScale, ReducerStateGrayScaleConfig, TYPE_DISPATCH_GRAYSACLE } from "@/interface/Grayscale"
 import { reducerGrayscale } from "@/reducers/GrayscaleReducer"
 import { reducerDarkmode } from "@/reducers/DarkmodeReducer"
@@ -14,8 +14,8 @@ export const ConfigContext = createContext({
 
 
 function ConfigProvider({ children }: { children: JSX.Element }) {
-    const initialStateGrayScale = getLocalValue('grayscale')
-    const initialStateDarkmode = getLocalValue('darkmode')
+    const initialStateGrayScale = getLocalStorageValue('grayscale')
+    const initialStateDarkmode = getLocalStorageValue('darkmode')
     const [{ grayscale }, dispatchGrayScale] = useReducer(reducerGrayscale, { grayscale: true })
     const [{ darkmode }, dispatchDarkmode] = useReducer(reducerDarkmode, { darkmode: true })
 
